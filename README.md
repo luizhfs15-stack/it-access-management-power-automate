@@ -12,181 +12,132 @@ The entire process is fully automated, improving control, traceability, and effi
 
 ## 🏗️ Architecture
 
-The solution follows a simple but realistic enterprise workflow:
+The solution follows a realistic enterprise workflow:
 
-Microsoft Lists → Power Automate → Approval Engine → Outlook Notifications → SharePoint Update
+Microsoft Lists → Power Automate → Approval Engine → Outlook Notifications → SharePoint Update → Python Reporting
 
-Each component plays a specific role in the automation lifecycle:
 
-- **Microsoft Lists** → stores access requests and status tracking  
-- **Power Automate** → orchestrates the workflow automation  
-- **Approvals** → handles manager decision-making  
-- **Outlook** → delivers automated notifications  
-- **SharePoint List** → persists final request status  
+Each component plays a specific role:
+
+- **Microsoft Lists** → stores access requests and status tracking
+- **Power Automate** → orchestrates workflow automation
+- **Approvals** → handles manager decisions
+- **Outlook** → sends automated notifications
+- **SharePoint List** → stores final request information
+- **Python Script** → generates operational reports and analysis
 
 ---
 
 ## ⚙️ Technologies Used
 
-- 🗂️ Microsoft Lists (data storage layer)
-- ⚡ Power Automate (workflow engine)
-- 📩 Microsoft Outlook (email notifications)
-- ✅ Microsoft Approvals (decision layer)
-- ☁️ Microsoft 365 ecosystem
+- 🗂️ Microsoft Lists
+- ⚡ Power Automate
+- 📩 Microsoft Outlook
+- ✅ Microsoft Approvals
+- 📁 SharePoint
+- 🐍 Python Automation
+- ☁️ Microsoft 365 Ecosystem
+
 
 ---
 
 ## 📊 Data Structure (Microsoft Lists)
 
-The system uses a structured data model to ensure traceability and governance:
+The system uses a structured data model:
 
-- Employee Name  
-- Email  
-- Requested System  
-- Justification  
-- Manager  
-- Status  
-- ApprovedBy  
-- ResponseDate  
+- Employee Name
+- Email
+- Requested System
+- Justification
+- Manager
+- Status
+- ApprovedBy
+- ResponseDate
 
-Each field supports auditability and process transparency.
+
+Each field supports:
+
+- Audit tracking
+- Governance
+- Process transparency
+
 
 ---
 
-## 🔄 Workflow Execution
+# 🔄 Workflow Execution
 
-### 1. Request Creation
 
-An employee submits a new access request in Microsoft Lists, providing all required details such as justification and target system.
+## 1. Request Creation
+
+An employee submits an access request through Microsoft Lists.
 
 <p align="center">
-  <img src="./images/fluxo-1.png" width="700"/>
+<img src="./images/fluxo-1.png" width="700"/>
 </p>
 
-📌 Alternative view (direct GitHub file access):
-https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-1.png
+
 
 ---
 
-### 2. Flow Trigger
+## 2. Flow Trigger
 
-Power Automate automatically detects the new entry and initiates the approval workflow without manual intervention.
+Power Automate detects the new request automatically.
 
 <p align="center">
-  <img src="./images/fluxo-2.png" width="700"/>
+<img src="./images/fluxo-2.png" width="700"/>
 </p>
 
-📌 Alternative view (direct GitHub file access):
-https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-2.png
+
 
 ---
 
-### 3. Approval Process
+## 3. Approval Process
 
-The assigned manager receives a structured approval request and decides whether access should be granted or denied.
+The manager receives an approval request.
 
-Possible outcomes:
+Possible results:
 
-- ✅ Approved  
-- ❌ Rejected  
+- ✅ Approved
+- ❌ Rejected
 
----
-
-### 4. System Update
-
-Once a decision is made, the system automatically updates the request record with:
-
-- Final Status  
-- Approver Name  
-- Response Timestamp  
 
 ---
 
-### 5. Notification Delivery
+## 4. System Update
 
-The requester receives an automated email informing the final decision and relevant details.
+After approval:
+
+The system updates:
+
+- Status
+- Approver
+- Response date
+
+
+---
+
+## 5. Notification Delivery
+
+
+The requester receives the final decision.
 
 <p align="center">
-  <img src="./images/sharepoint.png" width="700"/>
+<img src="./images/sharepoint.png" width="700"/>
 </p>
 
-📌 Alternative view (direct GitHub file access):
-https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/sharepoint.png
 
 ---
 
-## 📬 Notification Scenarios
+# 🐍 Python Automation Component
 
-### ✅ Approved Requests
-- Status updated to “Approved”  
-- Confirmation email sent to requester  
-- Request logged for audit tracking  
+This project includes a Python script that represents a support automation component.
 
-### ❌ Rejected Requests
-- Status updated to “Rejected”  
-- Email sent with decision notification  
-- Request preserved for governance tracking  
+The script is responsible for:
 
----
+- Generating access reports
+- Validating request data
+- Supporting operational analysis
+- Demonstrating integration between automation tools and custom scripts
 
-## 🧪 Validation Process
 
-The solution was validated through multiple end-to-end test scenarios:
-
-- Creation of access requests in Microsoft Lists  
-- Automatic trigger execution in Power Automate  
-- Approval and rejection flows  
-- Data consistency validation in SharePoint  
-- Email notification delivery confirmation  
-- Execution tracking via flow run history  
-
----
-
-## 💡 Key Features
-
-- End-to-end automated approval workflow  
-- Real-world IT access management simulation (IAM model)  
-- Automated email notification system  
-- Full audit trail (approver + timestamp tracking)  
-- Native integration with Microsoft 365 services  
-
----
-
-## 🎯 Business Value
-
-This solution demonstrates how organizations can modernize IT operations by:
-
-- Reducing manual approval workload  
-- Improving security and access governance  
-- Standardizing access request processes  
-- Increasing operational efficiency  
-- Ensuring traceability and compliance  
-
----
-
-## 🚀 Future Enhancements
-
-Planned improvements to extend enterprise capabilities:
-
-- Microsoft Entra ID (Azure AD) integration  
-- Multi-level approval workflows  
-- Power BI analytics dashboard  
-- Microsoft Teams notifications  
-- SLA tracking and monitoring  
-- Advanced audit and compliance logging  
-
----
-
-## 👨‍💻 Author
-
-Developed by Luiz Henrique  
-Cloud Computing | Automation | IT Infrastructure | Microsoft Azure Ecosystem  
-
----
-
-## 📌 Project Status
-
-✔ Fully operational  
-✔ End-to-end automated workflow  
-✔ Portfolio-ready for Cloud / Power Platform roles  
-✔ Enterprise-style implementation
+Location:
