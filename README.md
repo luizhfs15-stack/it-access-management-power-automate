@@ -8,16 +8,13 @@ It simulates a real Identity and Access Management (IAM) scenario commonly found
 
 The entire process is fully automated, improving control, traceability, and efficiency in IT operations.
 
-This solution also includes a Python automation component to support operational reporting and data analysis.
-
-
 ---
 
 ## 🏗️ Architecture
 
-The solution follows a realistic enterprise workflow:
+The solution follows a simple but realistic enterprise workflow:
 
-Microsoft Lists → Power Automate → Approval Engine → Outlook Notifications → SharePoint Update → Python Reporting
+Microsoft Lists → Power Automate → Approval Engine → Outlook Notifications → SharePoint Update
 
 
 Each component plays a specific role in the automation lifecycle:
@@ -27,8 +24,6 @@ Each component plays a specific role in the automation lifecycle:
 - **Approvals** → handles manager decision-making  
 - **Outlook** → delivers automated notifications  
 - **SharePoint List** → persists final request status  
-- **Python Automation** → generates reports and supports operational analysis  
-
 
 ---
 
@@ -38,10 +33,25 @@ Each component plays a specific role in the automation lifecycle:
 - ⚡ Power Automate (workflow engine)
 - 📩 Microsoft Outlook (email notifications)
 - ✅ Microsoft Approvals (decision layer)
-- 📁 SharePoint Lists
-- 🐍 Python Automation
+- 📁 SharePoint Lists (data management)
 - ☁️ Microsoft 365 ecosystem
+- 🔐 Identity & Access Management Concepts
 
+---
+
+## 📊 Solution Stack
+
+<div align="center">
+
+![Power Automate](https://img.shields.io/badge/Power_Automate-0066FF?style=for-the-badge&logo=powerautomate&logoColor=white)
+
+![SharePoint](https://img.shields.io/badge/SharePoint-03787C?style=for-the-badge&logo=microsoftsharepoint&logoColor=white)
+
+![Microsoft Lists](https://img.shields.io/badge/Microsoft_Lists-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+
+![Microsoft 365](https://img.shields.io/badge/Microsoft_365-D83B01?style=for-the-badge&logo=microsoftoffice&logoColor=white)
+
+</div>
 
 ---
 
@@ -65,7 +75,6 @@ Each field supports:
 - Process transparency
 - Access governance
 
-
 ---
 
 ## 🔄 Workflow Execution
@@ -79,6 +88,7 @@ An employee submits a new access request in Microsoft Lists, providing all requi
 </p>
 
 📌 Alternative view (direct GitHub file access):
+
 https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-1.png
 
 
@@ -92,7 +102,8 @@ Power Automate automatically detects the new entry and initiates the approval wo
   <img src="./images/fluxo-2.png" width="700"/>
 </p>
 
-📌 Alternative view (direct GitHub file access):
+📌 Alternative view:
+
 https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-2.png
 
 
@@ -107,7 +118,6 @@ Possible outcomes:
 - ✅ Approved  
 - ❌ Rejected  
 
-
 ---
 
 ### 4. System Update
@@ -117,7 +127,6 @@ Once a decision is made, the system automatically updates the request record wit
 - Final Status  
 - Approver Name  
 - Response Timestamp  
-
 
 ---
 
@@ -129,83 +138,9 @@ The requester receives an automated email informing the final decision and relev
   <img src="./images/sharepoint.png" width="700"/>
 </p>
 
-📌 Alternative view (direct GitHub file access):
+📌 Alternative view:
+
 https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/sharepoint.png
-
-
----
-
-## 🐍 Python Automation Component
-
-A Python automation module was added to complement the Power Platform workflow.
-
-The script simulates an enterprise support automation scenario responsible for:
-
-- Generating access reports
-- Validating request information
-- Producing operational metrics
-- Supporting IT governance analysis
-- Creating structured JSON reports
-
-
-Location:
-
-```
-scripts/access_report.py
-```
-
-
-Example:
-
-```python
-from datetime import datetime
-import json
-
-
-requests = [
-    {
-        "employee": "John Smith",
-        "system": "VPN",
-        "status": "Approved",
-        "approved_by": "IT Manager"
-    },
-
-    {
-        "employee": "Maria Silva",
-        "system": "ERP",
-        "status": "Rejected",
-        "approved_by": "IT Manager"
-    }
-]
-
-
-approved = 0
-rejected = 0
-
-
-for request in requests:
-
-    if request["status"] == "Approved":
-        approved += 1
-    else:
-        rejected += 1
-
-
-report = {
-
-    "generated": str(datetime.now()),
-    "approved_requests": approved,
-    "rejected_requests": rejected
-
-}
-
-
-with open("access_report.json", "w") as file:
-    json.dump(report, file, indent=4)
-
-
-print("Report generated successfully")
-```
 
 
 ---
@@ -214,16 +149,16 @@ print("Report generated successfully")
 
 ### ✅ Approved Requests
 
-- Status updated to “Approved”  
-- Confirmation email sent to requester  
-- Request logged for audit tracking  
+- Status updated to “Approved”
+- Confirmation email sent to requester
+- Request logged for audit tracking
 
 
 ### ❌ Rejected Requests
 
-- Status updated to “Rejected”  
-- Email sent with decision notification  
-- Request preserved for governance tracking  
+- Status updated to “Rejected”
+- Email sent with decision notification
+- Request preserved for governance tracking
 
 
 ---
@@ -232,28 +167,25 @@ print("Report generated successfully")
 
 The solution was validated through multiple end-to-end test scenarios:
 
-- Creation of access requests in Microsoft Lists  
-- Automatic trigger execution in Power Automate  
-- Approval and rejection flows  
-- Data consistency validation in SharePoint  
-- Email notification delivery confirmation  
-- Execution tracking via flow run history  
-- Python report generation validation  
-
+- Creation of access requests in Microsoft Lists
+- Automatic trigger execution in Power Automate
+- Approval and rejection flows
+- Data consistency validation in SharePoint
+- Email notification delivery confirmation
+- Execution tracking via flow run history
 
 ---
 
 ## 💡 Key Features
 
-- End-to-end automated approval workflow  
-- Real-world IT access management simulation (IAM model)  
-- Automated email notification system  
-- SharePoint integration  
-- Power Automate orchestration  
-- Python reporting automation  
-- Full audit trail (approver + timestamp tracking)  
-- Native integration with Microsoft 365 services  
-
+- End-to-end automated approval workflow
+- Real-world IT access management simulation (IAM model)
+- Power Automate workflow orchestration
+- SharePoint integration
+- Automated email notification system
+- Full audit trail
+- Approval history tracking
+- Microsoft 365 native integration
 
 ---
 
@@ -261,11 +193,11 @@ The solution was validated through multiple end-to-end test scenarios:
 
 This solution demonstrates how organizations can modernize IT operations by:
 
-- Reducing manual approval workload  
-- Improving security and access governance  
-- Standardizing access request processes  
-- Increasing operational efficiency  
-- Ensuring traceability and compliance  
+- Reducing manual approval workload
+- Improving security and access governance
+- Standardizing access request processes
+- Increasing operational efficiency
+- Ensuring traceability and compliance
 
 
 ---
@@ -274,22 +206,22 @@ This solution demonstrates how organizations can modernize IT operations by:
 
 Planned improvements to extend enterprise capabilities:
 
-- Microsoft Entra ID (Azure AD) integration  
-- Multi-level approval workflows  
-- Power BI analytics dashboard  
-- Microsoft Teams notifications  
-- SLA tracking and monitoring  
-- Advanced audit and compliance logging  
-- Automated identity provisioning  
+- Microsoft Entra ID (Azure AD) integration
+- Automated identity provisioning
+- Multi-level approval workflows
+- Power BI analytics dashboard
+- Microsoft Teams notifications
+- SLA tracking and monitoring
+- Advanced audit and compliance logging
 
 
 ---
 
 ## 👨‍💻 Author
 
-Developed by Luiz Henrique  
+Developed by Luiz Henrique
 
-Cloud Computing | Automation | IT Infrastructure | Microsoft Azure Ecosystem  
+Cloud Computing | Automation | IT Infrastructure | Microsoft Azure Ecosystem
 
 
 ---
@@ -299,6 +231,5 @@ Cloud Computing | Automation | IT Infrastructure | Microsoft Azure Ecosystem
 ✔ Fully operational  
 ✔ End-to-end automated workflow  
 ✔ Power Automate + SharePoint implemented  
-✔ Python automation component added  
 ✔ Enterprise-style implementation  
 ✔ Portfolio-ready for Cloud / Power Platform roles
