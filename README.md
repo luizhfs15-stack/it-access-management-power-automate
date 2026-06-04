@@ -8,6 +8,9 @@ It simulates a real Identity and Access Management (IAM) scenario commonly found
 
 The entire process is fully automated, improving control, traceability, and efficiency in IT operations.
 
+This solution also includes a Python automation component to support operational reporting and data analysis.
+
+
 ---
 
 ## 🏗️ Architecture
@@ -17,127 +20,285 @@ The solution follows a realistic enterprise workflow:
 Microsoft Lists → Power Automate → Approval Engine → Outlook Notifications → SharePoint Update → Python Reporting
 
 
-Each component plays a specific role:
+Each component plays a specific role in the automation lifecycle:
 
-- **Microsoft Lists** → stores access requests and status tracking
-- **Power Automate** → orchestrates workflow automation
-- **Approvals** → handles manager decisions
-- **Outlook** → sends automated notifications
-- **SharePoint List** → stores final request information
-- **Python Script** → generates operational reports and analysis
+- **Microsoft Lists** → stores access requests and status tracking  
+- **Power Automate** → orchestrates the workflow automation  
+- **Approvals** → handles manager decision-making  
+- **Outlook** → delivers automated notifications  
+- **SharePoint List** → persists final request status  
+- **Python Automation** → generates reports and supports operational analysis  
+
 
 ---
 
 ## ⚙️ Technologies Used
 
-- 🗂️ Microsoft Lists
-- ⚡ Power Automate
-- 📩 Microsoft Outlook
-- ✅ Microsoft Approvals
-- 📁 SharePoint
+- 🗂️ Microsoft Lists (data storage layer)
+- ⚡ Power Automate (workflow engine)
+- 📩 Microsoft Outlook (email notifications)
+- ✅ Microsoft Approvals (decision layer)
+- 📁 SharePoint Lists
 - 🐍 Python Automation
-- ☁️ Microsoft 365 Ecosystem
+- ☁️ Microsoft 365 ecosystem
 
 
 ---
 
 ## 📊 Data Structure (Microsoft Lists)
 
-The system uses a structured data model:
+The system uses a structured data model to ensure traceability and governance:
 
-- Employee Name
-- Email
-- Requested System
-- Justification
-- Manager
-- Status
-- ApprovedBy
-- ResponseDate
+- Employee Name  
+- Email  
+- Requested System  
+- Justification  
+- Manager  
+- Status  
+- ApprovedBy  
+- ResponseDate  
 
 
 Each field supports:
 
-- Audit tracking
-- Governance
+- Auditability
 - Process transparency
+- Access governance
 
 
 ---
 
-# 🔄 Workflow Execution
+## 🔄 Workflow Execution
 
+### 1. Request Creation
 
-## 1. Request Creation
-
-An employee submits an access request through Microsoft Lists.
+An employee submits a new access request in Microsoft Lists, providing all required details such as justification and target system.
 
 <p align="center">
-<img src="./images/fluxo-1.png" width="700"/>
+  <img src="./images/fluxo-1.png" width="700"/>
 </p>
 
+📌 Alternative view (direct GitHub file access):
+https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-1.png
 
 
 ---
 
-## 2. Flow Trigger
+### 2. Flow Trigger
 
-Power Automate detects the new request automatically.
+Power Automate automatically detects the new entry and initiates the approval workflow without manual intervention.
 
 <p align="center">
-<img src="./images/fluxo-2.png" width="700"/>
+  <img src="./images/fluxo-2.png" width="700"/>
 </p>
 
+📌 Alternative view (direct GitHub file access):
+https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-2.png
 
 
 ---
 
-## 3. Approval Process
+### 3. Approval Process
 
-The manager receives an approval request.
+The assigned manager receives a structured approval request and decides whether access should be granted or denied.
 
-Possible results:
+Possible outcomes:
 
-- ✅ Approved
-- ❌ Rejected
-
-
----
-
-## 4. System Update
-
-After approval:
-
-The system updates:
-
-- Status
-- Approver
-- Response date
+- ✅ Approved  
+- ❌ Rejected  
 
 
 ---
 
-## 5. Notification Delivery
+### 4. System Update
+
+Once a decision is made, the system automatically updates the request record with:
+
+- Final Status  
+- Approver Name  
+- Response Timestamp  
 
 
-The requester receives the final decision.
+---
+
+### 5. Notification Delivery
+
+The requester receives an automated email informing the final decision and relevant details.
 
 <p align="center">
-<img src="./images/sharepoint.png" width="700"/>
+  <img src="./images/sharepoint.png" width="700"/>
 </p>
+
+📌 Alternative view (direct GitHub file access):
+https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/sharepoint.png
 
 
 ---
 
-# 🐍 Python Automation Component
+## 🐍 Python Automation Component
 
-This project includes a Python script that represents a support automation component.
+A Python automation module was added to complement the Power Platform workflow.
 
-The script is responsible for:
+The script simulates an enterprise support automation scenario responsible for:
 
 - Generating access reports
-- Validating request data
-- Supporting operational analysis
-- Demonstrating integration between automation tools and custom scripts
+- Validating request information
+- Producing operational metrics
+- Supporting IT governance analysis
+- Creating structured JSON reports
 
 
 Location:
+
+```
+scripts/access_report.py
+```
+
+
+Example:
+
+```python
+from datetime import datetime
+import json
+
+
+requests = [
+    {
+        "employee": "John Smith",
+        "system": "VPN",
+        "status": "Approved",
+        "approved_by": "IT Manager"
+    },
+
+    {
+        "employee": "Maria Silva",
+        "system": "ERP",
+        "status": "Rejected",
+        "approved_by": "IT Manager"
+    }
+]
+
+
+approved = 0
+rejected = 0
+
+
+for request in requests:
+
+    if request["status"] == "Approved":
+        approved += 1
+    else:
+        rejected += 1
+
+
+report = {
+
+    "generated": str(datetime.now()),
+    "approved_requests": approved,
+    "rejected_requests": rejected
+
+}
+
+
+with open("access_report.json", "w") as file:
+    json.dump(report, file, indent=4)
+
+
+print("Report generated successfully")
+```
+
+
+---
+
+## 📬 Notification Scenarios
+
+### ✅ Approved Requests
+
+- Status updated to “Approved”  
+- Confirmation email sent to requester  
+- Request logged for audit tracking  
+
+
+### ❌ Rejected Requests
+
+- Status updated to “Rejected”  
+- Email sent with decision notification  
+- Request preserved for governance tracking  
+
+
+---
+
+## 🧪 Validation Process
+
+The solution was validated through multiple end-to-end test scenarios:
+
+- Creation of access requests in Microsoft Lists  
+- Automatic trigger execution in Power Automate  
+- Approval and rejection flows  
+- Data consistency validation in SharePoint  
+- Email notification delivery confirmation  
+- Execution tracking via flow run history  
+- Python report generation validation  
+
+
+---
+
+## 💡 Key Features
+
+- End-to-end automated approval workflow  
+- Real-world IT access management simulation (IAM model)  
+- Automated email notification system  
+- SharePoint integration  
+- Power Automate orchestration  
+- Python reporting automation  
+- Full audit trail (approver + timestamp tracking)  
+- Native integration with Microsoft 365 services  
+
+
+---
+
+## 🎯 Business Value
+
+This solution demonstrates how organizations can modernize IT operations by:
+
+- Reducing manual approval workload  
+- Improving security and access governance  
+- Standardizing access request processes  
+- Increasing operational efficiency  
+- Ensuring traceability and compliance  
+
+
+---
+
+## 🚀 Future Enhancements
+
+Planned improvements to extend enterprise capabilities:
+
+- Microsoft Entra ID (Azure AD) integration  
+- Multi-level approval workflows  
+- Power BI analytics dashboard  
+- Microsoft Teams notifications  
+- SLA tracking and monitoring  
+- Advanced audit and compliance logging  
+- Automated identity provisioning  
+
+
+---
+
+## 👨‍💻 Author
+
+Developed by Luiz Henrique  
+
+Cloud Computing | Automation | IT Infrastructure | Microsoft Azure Ecosystem  
+
+
+---
+
+## 📌 Project Status
+
+✔ Fully operational  
+✔ End-to-end automated workflow  
+✔ Power Automate + SharePoint implemented  
+✔ Python automation component added  
+✔ Enterprise-style implementation  
+✔ Portfolio-ready for Cloud / Power Platform roles
