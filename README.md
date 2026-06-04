@@ -63,6 +63,9 @@ An employee submits a new access request in Microsoft Lists, providing all requi
   <img src="./images/fluxo-1.png" width="700"/>
 </p>
 
+📌 Alternative view (direct GitHub file access):
+https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-1.png
+
 ---
 
 ### 2. Flow Trigger
@@ -72,6 +75,9 @@ Power Automate automatically detects the new entry and initiates the approval wo
 <p align="center">
   <img src="./images/fluxo-2.png" width="700"/>
 </p>
+
+📌 Alternative view (direct GitHub file access):
+https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/fluxo-2.png
 
 ---
 
@@ -103,6 +109,9 @@ The requester receives an automated email informing the final decision and relev
 <p align="center">
   <img src="./images/sharepoint.png" width="700"/>
 </p>
+
+📌 Alternative view (direct GitHub file access):
+https://github.com/luizhfs15-stack/it-access-management-power-automate/blob/main/sharepoint.png
 
 ---
 
